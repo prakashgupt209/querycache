@@ -37,7 +37,6 @@ def post_save_handler(sender, instance, **kwargs):
     """
     # key = f"mymodel_{instance.pk}_data"
     key = f"mymodel_data"
-    print(f"Post-save handler triggered for key: {key}")
     queryset = MyModel.objects.all()
     data = queryset.get_data()
     data_json = data.to_json()

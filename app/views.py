@@ -12,11 +12,11 @@ def test_view(request):
         print("Data retrieved from cache memory successfully")
         return HttpResponse("From Cache: {}".format(cached_data))
 
-    # Retrieve data and save it
-    queryset = MyModel.objects.all()
-    data = queryset.get_data()
-    my_model_instance = MyModel(name="example")
-    my_model_instance.save()  # This will trigger pre-save and post-save signals
+    data = MyModel.objects.get_data()   # this initiates
+    # Create a new instance of MyModel with the retrieved data
+    my_model_instance = MyModel()
+    # Save the instance, triggering pre-save and post-save signals
+    my_model_instance.save()
 
     print('data retrieved - {}'.format(data))
     # Output the retrieved data or a message
