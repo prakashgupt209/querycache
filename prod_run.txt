@@ -1,0 +1,9 @@
+pip install gunicorn
+
+gunicorn querycache.wsgi:application
+
+brew services stop redis
+
+brew services start redis
+
+to make the choice of redis based on env variable Django_env - ned to update in settings.py
